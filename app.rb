@@ -4,6 +4,24 @@ require "sinatra/reloader"
 class Application < Sinatra::Base
     # This allows the app code to refresh
     # without having to restart the server.
+    get '/hello' do
+        name = params[:name]
+
+        "Hello #{name}"
+    end
+
+    get "/names" do
+        names = params[:names]
+        return names.gsub(',', ', ')
+    end
+
+    post '/submit' do
+        name = params[:name]
+        message = params[:message]
+
+        "Thanks #{name}, you sent this message: #{message}"
+    end
+
     configure :development do
         register Sinatra::Reloader
     end
