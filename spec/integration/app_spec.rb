@@ -23,4 +23,17 @@ describe Application do
             expect(response.body).to eq 'Harold, Jack, Sam'
         end
     end
+    context 'POST /sort-names' do
+        it 'returns "Alice,Joe,Julia,Kieran,Zoe"' do
+            response = post('/sort-names', :names => 'Joe,Alice,Zoe,Julia,Kieran')
+            expect(response.status).to eq 200
+            expect(response.body).to eq 'Alice,Joe,Julia,Kieran,Zoe'
+        end
+
+        it 'returns "Harold,Jack,Sam"' do
+            response = post('/sort-names', :names => 'Sam,Harold,Jack')
+            expect(response.status).to eq 200
+            expect(response.body).to eq 'Harold,Jack,Sam'
+        end
+    end
 end

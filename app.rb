@@ -22,6 +22,13 @@ class Application < Sinatra::Base
         "Thanks #{name}, you sent this message: #{message}"
     end
 
+    post '/sort-names' do
+        names = params[:names]
+
+        sorted_names = names.split(',').sort.join(',')
+        sorted_names
+    end
+
     configure :development do
         register Sinatra::Reloader
     end
