@@ -4,13 +4,12 @@ require "sinatra/reloader"
 class Application < Sinatra::Base
     # This allows the app code to refresh
     # without having to restart the server.
-    get '/hello' do
-        name = params[:name]
 
-        "Hello #{name}"
+    get '/hello' do
+        erb(:hello)
     end
 
-    get "/names" do
+    get '/names' do
         names = params[:names]
         return names.gsub(',', ', ')
     end

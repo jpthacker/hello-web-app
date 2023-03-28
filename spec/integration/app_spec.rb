@@ -10,6 +10,15 @@ describe Application do
     # class so our tests work.
     let(:app) { Application.new }
 
+    context "GET /hello" do
+        it "returns the correct html" do
+            response = get('/hello')
+            expect(response.status).to eq 200
+            expect(response.body).to include('<head></head>')
+            expect(response.body).to include('<h1>Hello!</h1>')
+        end
+    end
+
     context "GET /names" do
         it "returns 'Julia, Mary, Karim'" do
             response = get("/names?names=Julia,Mary,Karim")
